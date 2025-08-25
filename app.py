@@ -216,10 +216,11 @@ def page_scoreboard():
     st.title("🏆 Papan Skor Langsung")
     st.caption("Auto-refresh setiap 3 saat. Buka di skrin besar untuk paparan langsung.")
     from streamlit_autorefresh import st_autorefresh
-except ImportError:
-    # fallback to rerun if needed
-    def st_autorefresh(*args, **kwargs):
-        st.rerun()
+
+def page_scoreboard():
+    st_autorefresh(interval=5000, limit=None)  # refresh every 5s
+    ...
+
     # Use autorefresh widget
     st.experimental_set_query_params(ts=str(time.time()))
     st.markdown("<meta http-equiv='refresh' content='3'>", unsafe_allow_html=True)
