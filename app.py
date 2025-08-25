@@ -215,7 +215,7 @@ def page_admin():
 def page_scoreboard():
     st.title("🏆 Papan Skor Langsung")
     st.caption("Auto-refresh setiap 3 saat. Buka di skrin besar untuk paparan langsung.")
-    st_autorefresh = st.experimental_rerun  # fallback if API changes
+    st_autorefresh = st.rerun  # fallback if API changes
     # Use autorefresh widget
     st.experimental_set_query_params(ts=str(time.time()))
     st.markdown("<meta http-equiv='refresh' content='3'>", unsafe_allow_html=True)
