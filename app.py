@@ -218,8 +218,11 @@ def page_scoreboard():
     from streamlit_autorefresh import st_autorefresh
 
 def page_scoreboard():
-    st_autorefresh(interval=5000, limit=None)  # refresh every 5s
-    ...
+    # Auto-refresh every 30 seconds only while this page is open
+    st_autorefresh(interval=30 * 1000, key="scoreboard_refresh")
+
+    st.title("🏆 Scoreboard")
+    # your scoreboard logic here...
 
     # Use autorefresh widget
     st.experimental_set_query_params(ts=str(time.time()))
